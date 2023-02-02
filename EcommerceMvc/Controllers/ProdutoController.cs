@@ -1,0 +1,51 @@
+﻿using EcommerceMvc.Models;
+using EcommerceMvc.Models.ViewModels;
+using EcommerceMvc.Repositories.Interfaces;
+using Microsoft.AspNetCore.Mvc;
+
+namespace EcommerceMvc.Controllers
+{
+    public class ProdutoController : Controller
+    {
+        private readonly IProdutoRepository _produtoRepository;
+
+        public ProdutoController(IProdutoRepository produtoRepository)
+        {
+            _produtoRepository = produtoRepository;
+        }
+
+        public IActionResult List(string categoria)
+        {
+            IEnumerable<Produto> produtos;
+            string categoriaAtual = string.Empty;
+
+            if (string.IsNullOrEmpty(categoria))
+            {
+                produtos = _produtoRepository.Produtos.OrderBy(p => p.ProdutoId);
+                categoriaAtual = "Todos os Produtos";
+            }
+            else
+            {
+                produtos = _produtoRepository.Produtos
+                          .Where(p => p.Categoria.CategoriaNome.Equals(categoria))
+                          .OrderBy(c => c.Nome);
+
+                categoriaAtual = categoria;
+            }
+
+            var produtosListViewModel = new ProdutoListViewModel
+            {
+                Produtos = produtos,
+                CategoriaAtual = categoriaAtual
+            };
+
+            return View(produtosListViewModel);
+        }
+
+        public IActionResult Details(int produtoId)
+        {
+            var produto = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
+            return View(produto);
+        }
+    }
+}
