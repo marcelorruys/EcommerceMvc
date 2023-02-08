@@ -1,6 +1,6 @@
 ﻿using EcommerceMvc.Context;
 using EcommerceMvc.Migrations;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceMvc.Models
 {

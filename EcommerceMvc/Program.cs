@@ -3,10 +3,12 @@ using EcommerceMvc.Models;
 using EcommerceMvc.Repositories;
 using EcommerceMvc.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
 
 builder.Services.AddDbContext<AppDbContext>
                    (options => options.UseMySql("server=localhost;database=ECOMERCE_MVC_MYSQL;uid=root;pwd=Marcelo@SQL",
@@ -14,6 +16,8 @@ builder.Services.AddDbContext<AppDbContext>
 
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();  
+
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
 

@@ -20,7 +20,14 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <form class="navbar-form navbar-right" asp-controller="Produto" asp-action="Search" method="get">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Procurar produto" name="searchString" value="@ViewData["searchString"]">
+                        </div>
+                    </form>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp;
                     @await Component.InvokeAsync("CarrinhoCompraResumo")
+                    &nbsp&nbsp&nbsp&nbsp&nbsp;
                     @await Component.InvokeAsync("CategoriaMenu")
                     <a class="nav-link text-light" asp-area="" asp-controller="Contato" asp-action="Index">Contato</a>
                     @*<a class="nav-link text-light" asp-area="" asp-controller="Produto" asp-action="List">Produtos</a>*@
