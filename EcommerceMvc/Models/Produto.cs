@@ -11,7 +11,7 @@ public class Produto
     public int ProdutoId { get; set; }
 
     [Required(ErrorMessage = "O nome do produto deve ser informado")]
-    [Display(Name = "Nome do Lanche")]
+    [Display(Name = "Nome do Produto")]
     [StringLength(80, MinimumLength = 10, ErrorMessage = "O {0} deve ter no mínimo {1} e no máximo {2} caracteres")]
     public string Nome { get; set; }
 
@@ -22,7 +22,7 @@ public class Produto
     public string DescricaoCurta { get; set; }
 
     [Required(ErrorMessage = "O descrição detalhada do produto deve ser informada")]
-    [Display(Name = "Descrição detalhada do Lanche")]
+    [Display(Name = "Descrição detalhada do Produto")]
     [MinLength(20, ErrorMessage = "Descrição detalhada deve ter no mínimo {1} caracteres")]
     [MaxLength(200, ErrorMessage = "Descrição detalhada pode exceder {1} caracteres")]
     public string DescricaoDetalhada { get; set; }

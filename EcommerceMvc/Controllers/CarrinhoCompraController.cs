@@ -1,6 +1,7 @@
 ﻿using EcommerceMvc.Models;
 using EcommerceMvc.Models.ViewModels;
 using EcommerceMvc.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EcommerceMvc.Controllers
@@ -30,6 +31,7 @@ namespace EcommerceMvc.Controllers
             return View(carrinhoCompraVM);
         }
 
+        [Authorize]
         public IActionResult AdicionarItemNoCarrinhoCompra(int produtoId)
         {
             var produtoSelecionado = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
@@ -40,6 +42,7 @@ namespace EcommerceMvc.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         public IActionResult RemoverItemNoCarrinhoCompra(int produtoId)
         {
             var produtoSelecionado = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);

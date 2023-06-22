@@ -25,9 +25,10 @@
                             <input type="text" class="form-control" placeholder="Procurar produto" name="searchString" value="@ViewData["searchString"]">
                         </div>
                     </form>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp;
+                    @await Html.PartialAsync("_LoginPartial")
+                    &nbsp
                     @await Component.InvokeAsync("CarrinhoCompraResumo")
-                    &nbsp&nbsp&nbsp&nbsp&nbsp;
+                    &nbsp
                     @await Component.InvokeAsync("CategoriaMenu")
                     <a class="nav-link text-light" asp-area="" asp-controller="Contato" asp-action="Index">Contato</a>
                     @*<a class="nav-link text-light" asp-area="" asp-controller="Produto" asp-action="List">Produtos</a>*@

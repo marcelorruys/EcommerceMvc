@@ -1,6 +1,7 @@
 ﻿using EcommerceMvc.Models;
 using EcommerceMvc.Models.ViewModels;
 using EcommerceMvc.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
